@@ -19,9 +19,9 @@ def index():
 def index_ml():
     path = request.args.get("path")
     print("**** our path",path)
-    result = m.prediction(path)
-    print(result)
-    return jsonify(isScoring=result)
+    # result = m.prediction(path)
+    probs= m.prediction_graph(path)
+    return jsonify(long=True ,result=probs)
 
 if __name__ == '__main__':
     app.run(debug=True)

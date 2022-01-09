@@ -19,20 +19,23 @@ app.post('/upload', (req, res) => {
   }
 
   const file = req.files.file;
+  const path = `${__dirname}/client/public/${Date.now().toString() + file.name}`;
 
-  file.mv(`${__dirname}/client/public/${file.name + Date.now().toString()}`, err => {
+  file.mv(path, err => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
     }
 
-    console.log({ path: `${__dirname}/client/public/${file.name}` });
+    console.log({ path });
     axios.post("http://localhost:5000/ml", null, {
       params: {
-        path: `${__dirname}/client/public/${file.name + Date.now().toString()}`
+        path
       }
     }).then(response => {
-      res.json({ fileName: file.name, filePath: `/${file.name}`, score: response.data.isScoring });
+      console.log("we are getting some response", response.data);
+      console.log("sending response", { fileName: file.name, filePath: `/${file.name}`, result: response.data.result, resLong: response.data.long });
+      res.json({ fileName: file.name, filePath: `/${file.name}`, result: response.data.result, resLong: response.data.long });
     }).catch(err => { console.log(err); });
 
     // fetch(`http://localhost:5000/ml?path=${__dirname}/client/public/${file.name}`, {
