@@ -1,6 +1,6 @@
 This repository contains the submitted solution as part of the *MTX - HackOlympics 2.0*. The task involved development of a Web Application for 'Scoring Event Detection in Basketball Videos' and involved expertise in cloud computing, artificial intelligence, machine learning, frontend and backend web development to put together solutions to the problem set provided.
 
-PROBLEM STATEMENT
+*PROBLEM STATEMENT*
 The ever-growing collection of data combined with the fast advancement in Artificial
 Intelligence, Machine Learning, and Deep Learning have opened endless opportunities in team
 sports like basketball, football, and soccer, to name a few.
@@ -12,7 +12,8 @@ To that end, the goal of this problem statement is to detect the occurrence of s
 basketball game videos. We are interested in detecting only two modes of scoring, i.e 2 pointers
 and 3 pointers. Given a video snippet, the objective is to perform binary classification to predict
 if the input video snippet contains a scoring event (either 2 pointer or 3 pointer) or not.
-ML MODELLING DETAILS
+
+*ML MODELLING DETAILS*
 1. Input: The input would be a 2 second long video clip. The video clips containing a scoring event
 (2 pointer or 3 pointer) would be labelled as 1, else 0
 2. Output: Being a classification problem, the model output would be a prediction that indicates if
@@ -25,7 +26,8 @@ but the participants are free to choose any other appropriate input video for th
 demonstration (Hint: You may consider splitting the long untrimmed video into multiple
 segments of appropriate length and use the classification model to obtain the scoring event
 probability for each such segment)
-APPLICATION DEVELOPMENT
+
+*APPLICATION DEVELOPMENT*
 In addition to the above backend model scripts, one needs to create a front end web page
 interacting with the backend model to show the live inference results.
 The front end API should have the following features:
