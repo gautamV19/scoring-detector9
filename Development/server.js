@@ -34,8 +34,7 @@ app.post('/upload', (req, res) => {
       }
     }).then(response => {
       console.log("we are getting some response", response.data);
-      console.log("sending response", { fileName: file.name, filePath: `/${file.name}`, result: response.data.result, resLong: response.data.long });
-      res.json({ fileName: file.name, filePath: `/${file.name}`, result: response.data.result, resLong: response.data.long });
+      res.json({ fileName: file.name, filePath: `/${file.name}`, result: response.data.result, isScoring: response.data.isScoring });
     }).catch(err => { console.log(err); });
 
     // fetch(`http://localhost:5000/ml?path=${__dirname}/client/public/${file.name}`, {
