@@ -18,8 +18,8 @@ const FileUpload = () => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [isScoring, setScoring] = useState(null);
   const [long, setLong] = useState(false);
-  // const [data, setData] = useState([0.843715250492096, 0.8554629683494568]);
-  var data = [0.843715250492096, 0.8554629683494568];
+  const [data, setData] = useState([]);
+  //var data = [0.843715250492096, 0.8554629683494568];
 
   const onChange = (e) => {
     setFile(e.target.files[0]);
@@ -53,17 +53,12 @@ const FileUpload = () => {
         const { fileName, filePath, resLong, result } = res.data;
         console.log(fileName, filePath, resLong, result);
 
+        console.log(data)
         setLong(resLong);
-
-        console.log(result);
-
-        /*
-        data= result
-        data=[...result]
-        data.contcat(result)
-        */
-
-        long ? data.push(result[0]) : setScoring(result);
+        if (resLong)
+          setData(result);
+        else
+          setScoring(result)
 
         setUploadedFile({ fileName, filePath });
 
@@ -84,6 +79,7 @@ const FileUpload = () => {
 
   const Result = () => {
     if (long) {
+      console.log(data)
       return (
         <div>
           <h1>This is a long video</h1>
