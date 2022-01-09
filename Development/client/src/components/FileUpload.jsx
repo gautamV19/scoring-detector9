@@ -2,6 +2,8 @@ import React, { Fragment, useState } from "react";
 import Message from "./Message";
 import Progress from "./Progress";
 import axios from "axios";
+import Audio from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import {
   Chart,
@@ -19,8 +21,9 @@ const FileUpload = () => {
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [isScoring, setScoring] = useState(null);
-  const [long, setLong] = useState(false);
+  const [long, setLong] = useState(null);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e) => {
     const video = e.target.files[0];
@@ -28,6 +31,7 @@ const FileUpload = () => {
     setFilename(video.name + Date.now().toString());
     video.preload = "metadata";
     console.log(video.size);
+    video.size > 1500000 ? setLong(true) : setLong(false);
   };
 
   const onSubmit = async (e) => {
@@ -38,6 +42,7 @@ const FileUpload = () => {
       console.log(file, filename);
 
       try {
+        setLoading(true);
         const res = await axios.post("/upload", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -54,13 +59,10 @@ const FileUpload = () => {
         // Clear percentage
         setTimeout(() => setUploadPercentage(0), 10000);
 
-        const { fileName, filePath, resLong, result } = res.data;
-        console.log(fileName, filePath, resLong, result);
+        const { fileName, filePath, result, isScoring } = res.data;
 
-        console.log(data);
-        setLong(resLong);
-        if (resLong) setData(result);
-        else setScoring(result);
+        if (long) setData(result);
+        else setScoring(isScoring);
 
         setUploadedFile({ fileName, filePath });
 
@@ -80,6 +82,7 @@ const FileUpload = () => {
   };
 
   const Result = () => {
+    // setLoading(false);
     if (long) {
       console.log(data);
       return (
@@ -117,48 +120,43 @@ const FileUpload = () => {
       );
     } else {
       if (isScoring) {
-        return <div>It is a scoring event</div>;
+        return <div className="text-center">It is a scoring event</div>;
       } else if (isScoring === false) {
-        return <div>Not Scoring</div>;
+        return <div className="text-center">Not Scoring</div>;
       }
     }
   };
 
   return (
     <Fragment>
-      {!isScoring ? (
-        <div className="col-md-6 offset-md-3">
-          <form onSubmit={onSubmit}>
-            {message ? <Message msg={message} /> : null}
-            <div className="custom-file mb-4">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="customFile"
-                onChange={onChange}
-              />
-              <label className="custom-file-label" htmlFor="customFile">
-                {filename}
-              </label>
-            </div>
-
-            <Progress percentage={uploadPercentage} />
-
+      <div className="col-md-6 offset-md-3">
+        <form onSubmit={onSubmit}>
+          {message ? <Message msg={message} /> : null}
+          <div className="custom-file mb-4">
             <input
-              type="submit"
-              value="Upload"
-              className="btn btn-primary btn-block mt-4"
+              type="file"
+              className="custom-file-input"
+              id="customFile"
+              onChange={onChange}
             />
-          </form>
-        </div>
-      ) : null}
+            <label className="custom-file-label" htmlFor="customFile">
+              {filename}
+            </label>
+          </div>
+
+          <Progress percentage={uploadPercentage} />
+
+          <input
+            type="submit"
+            value="Upload"
+            className="btn btn-primary btn-block mt-4"
+          />
+        </form>
+      </div>
+
       {uploadedFile ? (
-        <div className="row mt-5">
-          {/* <div className='col-md-6 m-auto'>
-            <h3 className='text-center'>{uploadedFile.fileName}</h3>
-            <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
-                    </div> */}
-          {Result()}
+        <div className="row mt-5 text-center">
+          {Result() || (loading && "Loading...")}
         </div>
       ) : null}
     </Fragment>

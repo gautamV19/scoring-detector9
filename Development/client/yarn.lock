@@ -8390,6 +8390,11 @@
   "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   "version" "3.0.4"
 
+"react-loader-spinner@^5.0.6":
+  "integrity" "sha512-YZS89WkbNQcbOmro3234O5IqzvRAz4niiy6puR6t7Ae92jUoIcHReCNJwi69egUQR3eCRB2uyITk7Z97+xu2+w=="
+  "resolved" "https://registry.npmjs.org/react-loader-spinner/-/react-loader-spinner-5.0.6.tgz"
+  "version" "5.0.6"
+
 "react-resize-detector@^6.6.3":
   "integrity" "sha512-0FaEcUBAbn+pq3PT5a9hHRebUfuS1SRLGLpIw8LydU7zX429I6XJgKerKAMPsJH0qWAl6o5bVKNqFJqr6tGPYw=="
   "resolved" "https://registry.npmjs.org/react-resize-detector/-/react-resize-detector-6.7.8.tgz"
