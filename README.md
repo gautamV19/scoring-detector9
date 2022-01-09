@@ -1,4 +1,4 @@
-This repository contains the submitted solution as part of the *MTX - HackOlympics 2.0*. The task involved development of a Web Application for 'Scoring Event Detection in Basketball Videos' and involved expertise in cloud computing, artificial intelligence, machine learning, frontend and backend web development to put together solutions to the problem set provided.
+This repository contains the submitted solution as part of the *MTX - HackOlympics 2.0*. The task involved development of a Web Application for 'Scoring Event Detection in Basketball Videos' and involved expertise in cloud computing, docker productas, artificial intelligence, machine learning, frontend and backend web development to put together solutions to the problem set provided.
 
 *PROBLEM STATEMENT:*
 The ever-growing collection of data combined with the fast advancement in Artificial
