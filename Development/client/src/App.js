@@ -5,7 +5,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
 
 const App = () => (
-  <div className='container mt-4'>
+  <div className=''>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<FileUpload />} />
