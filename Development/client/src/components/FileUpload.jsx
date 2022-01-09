@@ -3,8 +3,6 @@ import Message from "./Message";
 import Progress from "./Progress";
 import axios from "axios";
 import Header from "./Header";
-import Audio from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import {
   Chart,
