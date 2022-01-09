@@ -119,9 +119,9 @@ const FileUpload = () => {
       );
     } else {
       if (isScoring) {
-        return <div className="text-center">It is a scoring event</div>;
+        return <div className="text-center"><h6>It is a scoring event</h6></div>;
       } else if (isScoring === false) {
-        return <div className="text-center">Not Scoring</div>;
+        return <div className="text-center"><h6>Not Scoring</h6></div>;
       }
     }
   };
@@ -129,37 +129,39 @@ const FileUpload = () => {
   return (
     <Fragment>
       <Header />
-      <div className="col-md-6 offset-md-3 text-center">
-        <h4>Upload your mp4 file here</h4>
-        <form onSubmit={onSubmit}>
-          {message ? <Message msg={message} /> : null}
-          <div className="custom-file mb-4">
+      <div className="container">
+        <div className="col-md-6 offset-md-3 text-center">
+          <h4>Upload your mp4 file here</h4>
+          <form onSubmit={onSubmit}>
+            {message ? <Message msg={message} /> : null}
+            <div className="custom-file mb-4">
+              <input
+                type="file"
+                className="custom-file-input"
+                id="customFile"
+                onChange={onChange}
+              />
+              <label className="custom-file-label" htmlFor="customFile">
+                {filename}
+              </label>
+            </div>
+
+            <Progress percentage={uploadPercentage} />
+
             <input
-              type="file"
-              className="custom-file-input"
-              id="customFile"
-              onChange={onChange}
+              type="submit"
+              value="Upload"
+              className="btn btn-primary btn-block mt-4"
             />
-            <label className="custom-file-label" htmlFor="customFile">
-              {filename}
-            </label>
-          </div>
-
-          <Progress percentage={uploadPercentage} />
-
-          <input
-            type="submit"
-            value="Upload"
-            className="btn btn-primary btn-block mt-4"
-          />
-        </form>
-      </div>
-
-      {uploadedFile ? (
-        <div className="row mt-5 text-center">
-          {Result() || (loading && "Loading...")}
+          </form>
         </div>
-      ) : null}
+
+        {uploadedFile ? (
+          <div className="row mt-5 mb-5 text-center">
+            {Result() || (loading && "Loading...")}
+          </div>
+        ) : null}
+      </div>
     </Fragment>
   );
 };
