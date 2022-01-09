@@ -5,6 +5,8 @@ import axios from "axios";
 
 import {
   Chart,
+  ChartValueAxis,
+  ChartValueAxisItem,
   ChartSeries,
   ChartSeriesItem,
 } from "@progress/kendo-react-charts";
@@ -19,11 +21,13 @@ const FileUpload = () => {
   const [isScoring, setScoring] = useState(null);
   const [long, setLong] = useState(false);
   const [data, setData] = useState([]);
-  //var data = [0.843715250492096, 0.8554629683494568];
 
   const onChange = (e) => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name + Date.now().toString());
+    const video = e.target.files[0];
+    setFile(video);
+    setFilename(video.name + Date.now().toString());
+    video.preload = "metadata";
+    console.log(video.size);
   };
 
   const onSubmit = async (e) => {
@@ -80,11 +84,33 @@ const FileUpload = () => {
       console.log(data);
       return (
         <div>
-          <h1>This is a long video</h1>
-          <h6>{data}</h6>
-          <Chart>
+          <span>Probability of scoring Vs Time</span>
+          <Chart
+            style={{
+              width: "70vw",
+              height: "40vh",
+              inline: true,
+            }}
+            pannable={{
+              lock: "y",
+            }}
+            zoomable={{
+              mousewheel: {
+                lock: "y",
+              },
+            }}
+          >
+            <ChartValueAxis>
+              <ChartValueAxisItem
+                title={{
+                  text: "Probability of scoring",
+                }}
+                min={0}
+                max={1.0}
+              />
+            </ChartValueAxis>
             <ChartSeries>
-              <ChartSeriesItem data={data} />
+              <ChartSeriesItem data={data} style={{ color: "red" }} />
             </ChartSeries>
           </Chart>
         </div>

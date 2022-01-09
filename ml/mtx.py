@@ -130,5 +130,4 @@ def prediction_graph(path):
         for i in range(50):
             out = model(img[:,i].unsqueeze(1).permute(0,2,1,3,4))
             probs.append(float(out[:,1]/(out[:,1]+out[:,0])))
-    print(probs)
     return probs
