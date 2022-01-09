@@ -17,6 +17,7 @@ events that take place during a sports match.
 - It will show is it scoring or not
 - For longer videos it shows graphs
 
+
 ## Installation
 
 For Development
@@ -34,6 +35,7 @@ For ML
   python app.py
 ```
 
+
 ## Tech Stack
 
 **Client:** React
@@ -41,11 +43,14 @@ For ML
 **Server:** Node, Express, Flask
 
 **ML:** Python
+
+
 ## Authors
 
 Machine learning:
 - [@abhipraay](https://github.com/abhipraay)
 - [@jeshlin-donna](https://github.com/jeshlin-donna)
+
 Web development:
 - [@jayanth151002](https://github.com/jayanth151002)
 - [@gautamV19](https://github.com/gautamV19)
