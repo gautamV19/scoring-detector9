@@ -129,7 +129,8 @@ const FileUpload = () => {
   return (
     <Fragment>
       <Header />
-      <div className="col-md-6 offset-md-3">
+      <div className="col-md-6 offset-md-3 text-center">
+        <h4>Upload your mp4 file here</h4>
         <form onSubmit={onSubmit}>
           {message ? <Message msg={message} /> : null}
           <div className="custom-file mb-4">
