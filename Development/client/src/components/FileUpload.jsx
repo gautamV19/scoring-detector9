@@ -53,12 +53,10 @@ const FileUpload = () => {
         const { fileName, filePath, resLong, result } = res.data;
         console.log(fileName, filePath, resLong, result);
 
-        console.log(data)
+        console.log(data);
         setLong(resLong);
-        if (resLong)
-          setData(result);
-        else
-          setScoring(result)
+        if (resLong) setData(result);
+        else setScoring(result);
 
         setUploadedFile({ fileName, filePath });
 
@@ -79,7 +77,7 @@ const FileUpload = () => {
 
   const Result = () => {
     if (long) {
-      console.log(data)
+      console.log(data);
       return (
         <div>
           <h1>This is a long video</h1>
