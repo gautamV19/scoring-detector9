@@ -20,6 +20,7 @@ def index_ml():
     path = request.args.get("path")
     print("**** our path",path)
     result = m.prediction(path)
+    print(result)
     return jsonify(isScoring=result)
 
 if __name__ == '__main__':
