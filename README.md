@@ -13,8 +13,6 @@ events that take place during a sports match.
 
 ## Features
 
-https://user-images.githubusercontent.com/86219774/160126655-12e3f0fd-88cc-4856-bf3e-03b7777b0b8c.mp4
-
 
 
 - Upload the video
@@ -58,3 +56,7 @@ Machine learning:
 Web development:
 - [@jayanth151002](https://github.com/jayanth151002)
 - [@gautamV19](https://github.com/gautamV19)
+
+
+https://user-images.githubusercontent.com/86219774/160126857-7330a518-f464-43e9-b7f1-cbe7a130d2cf.mp4
+
