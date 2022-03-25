@@ -13,6 +13,10 @@ events that take place during a sports match.
 
 ## Features
 
+https://user-images.githubusercontent.com/86219774/160126655-12e3f0fd-88cc-4856-bf3e-03b7777b0b8c.mp4
+
+
+
 - Upload the video
 - It will show is it scoring or not
 - For longer videos it shows graphs
